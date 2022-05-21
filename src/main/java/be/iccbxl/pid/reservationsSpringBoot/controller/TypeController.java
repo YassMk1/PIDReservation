@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import be.iccbxl.pid.reservationsSpringBoot.model.Type;
-import be.iccbxl.pid.reservationsSpringBoot.model.TypeService;
+import be.iccbxl.pid.reservationsSpringBoot.service.TypeService;
 
 @Controller
 public class TypeController {
@@ -28,7 +28,7 @@ public class TypeController {
 	
 	@GetMapping("/types/{id}")
     public String show(Model model, @PathVariable("id") String id) {
-		Type type = service.getType(id); //not get(id)
+		Type type = service.getType(id);
 
 		model.addAttribute("type", type);
 		model.addAttribute("title", "Fiche d'un type");

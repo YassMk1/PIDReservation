@@ -1,9 +1,11 @@
-package be.iccbxl.pid.reservationsSpringBoot.model;
+package be.iccbxl.pid.reservationsSpringBoot.service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import be.iccbxl.pid.reservationsSpringBoot.model.Locality;
+import be.iccbxl.pid.reservationsSpringBoot.repository.LocalityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +24,7 @@ public class LocalityService {
 	}
 	
 	public Locality get(String id) {
-		Long indice = (long) Integer.parseInt(id);
+		Long indice = Long.parseLong(id);
 		Optional<Locality> locality = repository.findById(indice); 
 		
 		return locality.isPresent() ? locality.get() : null;

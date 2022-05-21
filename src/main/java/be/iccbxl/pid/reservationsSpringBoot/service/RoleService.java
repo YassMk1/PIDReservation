@@ -1,9 +1,11 @@
-package be.iccbxl.pid.reservationsSpringBoot.model;
+package be.iccbxl.pid.reservationsSpringBoot.service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import be.iccbxl.pid.reservationsSpringBoot.model.Role;
+import be.iccbxl.pid.reservationsSpringBoot.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

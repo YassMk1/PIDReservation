@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import be.iccbxl.pid.reservationsSpringBoot.model.Locality;
-import be.iccbxl.pid.reservationsSpringBoot.model.LocalityService;
+import be.iccbxl.pid.reservationsSpringBoot.service.LocalityService;
 
 @Controller
 public class LocalityController {

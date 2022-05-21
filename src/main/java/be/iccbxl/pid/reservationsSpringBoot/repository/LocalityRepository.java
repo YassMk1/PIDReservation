@@ -1,5 +1,6 @@
-package be.iccbxl.pid.reservationsSpringBoot.model;
+package be.iccbxl.pid.reservationsSpringBoot.repository;
 
+import be.iccbxl.pid.reservationsSpringBoot.model.Locality;
 import org.springframework.data.repository.CrudRepository;
 
 public interface LocalityRepository extends CrudRepository<Locality, Long> {

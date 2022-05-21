@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import be.iccbxl.pid.reservationsSpringBoot.model.Role;
-import be.iccbxl.pid.reservationsSpringBoot.model.RoleService;
+import be.iccbxl.pid.reservationsSpringBoot.service.RoleService;
 
 @Controller
 public class RoleController {
