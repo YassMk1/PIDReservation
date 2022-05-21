@@ -16,4 +16,5 @@ public class Artist {
     private Long id;
     private String firstname;
     private String lastname;
+   
 }

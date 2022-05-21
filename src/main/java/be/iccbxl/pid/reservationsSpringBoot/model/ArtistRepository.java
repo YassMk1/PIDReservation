@@ -1,6 +1,5 @@
-package be.iccbxl.pid.reservationsSpringBoot.repository;
+package be.iccbxl.pid.reservationsSpringBoot.model;
 
-import be.iccbxl.pid.reservationsSpringBoot.model.Artist;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
