@@ -10,7 +10,19 @@
 	        <h1 th:text="${artist.firstname} +' '+ ${artist.lastname}">Bob Sull</h1>
 	        <h1 th:text="|${artist.firstname}  ${artist.lastname}|">Bob Sull</h1>
 
-	        <nav><a th:href="@{/artists}">Retour à l'index</a></nav>
+			 <div class="actions">
+				 <a th:href="@{/artists/{id}/edit(id=${artist.id})}">Edit</a>
+			 </div>
+
+			 <form th:id="|deleteForm-${artist.id}|"
+				   th:action="@{/artists/{id}(id=${artist.id})}" th:method="delete">
+				 <a href="#" th:onclick="|if(confirm('Confirm delete artist #${artist.id}'))
+                 		document.getElementById('deleteForm-${artist.id}').submit();
+                 		return false;|">Delete</a>
+			 </form>
+
+
+			 <nav><a th:href="@{/artists}">Retour ï¿½ l'index</a></nav>
 	     </div>
 	</div>
 </body>
