@@ -18,6 +18,21 @@
                 <li th:classappend="${module == 'artists' ? 'active' : ''}">
                     <a href="#" th:href="@{/artists}">Artists</a>
                 </li>
+                <li th:classappend="${module == 'types' ? 'active' : ''}">
+                    <a href="#" th:href="@{/types}">Types</a>
+                </li>
+                <li th:classappend="${module == 'localities' ? 'active' : ''}">
+                    <a href="#" th:href="@{/localities}">Localities</a>
+                </li>
+                <li th:classappend="${module == 'shows' ? 'active' : ''}">
+                    <a href="#" th:href="@{/shows}">Shows</a>
+                </li>
+                <li th:classappend="${module == 'representations' ? 'active' : ''}">
+                    <a href="#" th:href="@{/representations}">Representations</a>
+                </li>
+                <li th:classappend="${module == 'roles' ? 'active' : ''}">
+                    <a href="#" th:href="@{/roles}">Role</a>
+                </li>
             </ul>
         </div>
     </div>

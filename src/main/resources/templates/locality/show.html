@@ -7,15 +7,19 @@
 <body>
 	<div class="container">
 	     <div layout:fragment="content">
-	        <h1 th:text="${locality.postalCode} +' '+ ${locality.locality}">1000 Bruxelles</h1>
-	        <h1 th:text="|${locality.postalCode}  ${locality.locality}|">1000 Bruxelles</h1>
+	        <h1 th:text="${mylocality.postalCode} +' '+ ${mylocality.locality}">1000 Bruxelles</h1>
+	        <h1 th:text="|${mylocality.postalCode}  ${mylocality.locality}|">1000 Bruxelles</h1>
 	    
-	        <ul th:unless="${#lists.isEmpty(locality.locations)}">
-	       	<li th:each="location : ${locality.locations}" 
+	        <ul th:unless="${#lists.isEmpty(mylocality.locations)}">
+	       	<li th:each="location : ${mylocality.locations}"
     			 th:text="${location.designation}">Dexia Art center</li>
    	        </ul>
 
-   	        <p th:if="${#lists.isEmpty(locality.locations)}">Aucun lieu de spectacle.</p>
+			 <div class="actions">
+				 <a th:href="@{/localities/{id}/edit(id=${mylocality.id})}">Edit</a>
+			 </div>
+
+   	        <p th:if="${#lists.isEmpty(mylocality.locations)}">Aucun lieu de spectacle.</p>
         
 	        <nav><a th:href="@{/localities}">Retour à l'index</a></nav>
 	     </div>

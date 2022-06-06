@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:layout="http://www.ultraq.net.mx/thymeleaf/layout"
+      layout:decorate="~{layouts/main}">
+<head>
+    <title>Création d'une localité</title>
+    <style>
+        .fieldError { color: red; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div layout:fragment="content">
+        <h1>Nouvel localité</h1>
+
+        <form th:action="@{/localities/create}" th:object="${locality}" method="post">
+            <div>
+                <label>Postal code:</label>
+                <input type="text" th:field="*{postalCode}">
+                <p th:if="${#fields.hasErrors('postalCode')}"
+                   th:errors="*{postalCode}" th:errorclass="fieldError"></p>
+            </div>
+            <div>
+                <label>Localité:</label>
+                <input type="text" th:field="*{locality}">
+                <p th:if="${#fields.hasErrors('locality')}"
+                   th:errors="*{locality}" th:errorclass="fieldError"></p>
+            </div>
+            <div>
+                <button type="submit" th:text="Modifier">Modifier</button>
+                <button type="reset" th:text="Réinitialiser">Réinitialiser</button>
+                <a th:href="@{/localities}">Annuler</a>
+            </div>
+        </form>
+
+        <nav><a th:href="@{/localities}">Retour à l'index</a></nav>
+    </div>
+</div>
+</body>
+</html>

@@ -2,19 +2,35 @@
 <html xmlns:layout="http://www.ultraq.net.mx/thymeleaf/layout"
  layout:decorate="~{layouts/main}">
 <head>
-<title>Liste des localités</title>
+<title>Liste des localitÃ©s</title>
 </head>
 <body>
 	<div class="container">
 	     <div layout:fragment="content">
-	        <h1 th:text="${title}">Liste des localités</h1>
-	
-	        <ul th:unless="${#lists.isEmpty(localities)}">
-                	<li th:each="locality : ${localities}">
-		    <span th:text="|${locality.postalCode} ${locality.locality}|">1000 Bruxelles</span>
-	    <a th:href="@{/localities/{id}(id=${locality.id})}">View</a>
-	</li>
-	        </ul>
+	        <h1 th:text="${title}">Liste des localitÃ©s</h1>
+
+			 <div class="actions">
+				 <a th:href="@{/types/create}">Add new locality</a>
+			 </div>
+
+			 <table th:unless="${#lists.isEmpty(localities)}">
+				 <thead>
+				 <tr>
+					 <th>Postal code</th>
+					 <th>Locality name</th>
+					 <th colspan="2">Actions</th>
+				 </tr>
+				 </thead>
+				 <tbody>
+				 <tr th:each="locality : ${localities}">
+					 <td th:text="${locality.postalCode}">pc</td>
+					 <td th:text="${locality.locality}">Locality</td>
+					 <td><a th:href="@{/localities/{id}(id=${locality.id})}">View</a></td>
+					 <td><a th:href="@{/localities/{id}/edit(id=${locality.id})}">Edit</a></td>
+				 </tr>
+				 </tbody>
+			 </table>
+			 
 	    </div>
 	</div>
 </body>

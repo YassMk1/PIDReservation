@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:layout="http://www.ultraq.net.mx/thymeleaf/layout"
+      layout:decorate="~{layouts/main}">
+<head>
+    <title>Modification d'un type</title>
+    <style>
+        .fieldError { color: red; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div layout:fragment="content">
+        <h1 th:text="|${mytype.type}|">Type</h1>
+
+        <form th:action="@{/types/{id}/edit(id=${mytype.id})}" th:object="${mytype}" th:method="put">
+            <div>
+                <label>Id:</label>
+                <span th:text="${mytype.id}">1</span>
+            </div>
+            <div>
+                <label>type:</label>
+                <input type="text" th:field="*{type}">
+                <p th:if="${#fields.hasErrors('type')}"
+                   th:errors="*{type}" th:errorclass="fieldError"></p>
+            </div>
+            <div>
+                <button type="submit" th:text="Modifier">Modifier</button>
+                <button type="reset" th:text="Réinitialiser">Réinitialiser</button>
+                <a th:href="${back}">Annuler</a>
+            </div>
+        </form>
+
+        <nav><a th:href="@{/types}">Retour à l'index</a></nav>
+    </div>
+</div>
+</body>
+</html>

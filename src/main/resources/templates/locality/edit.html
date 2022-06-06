@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:layout="http://www.ultraq.net.mx/thymeleaf/layout"
+      layout:decorate="~{layouts/main}">
+<head>
+    <title>Modification d'une localité</title>
+    <style>
+        .fieldError { color: red; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div layout:fragment="content">
+        <h1 th:text="|${mylocality.postalCode}  ${mylocality.locality}|">1000 Bla Bla</h1>
+
+        <form th:action="@{/localities/{id}/edit(id=${mylocality.id})}" th:object="${mylocality}" th:method="put">
+            <div>
+                <label>Id:</label>
+                <span th:text="${mylocality.id}">1</span>
+            </div>
+            <div>
+                <label>postalCode:</label>
+                <input type="text" th:field="*{postalCode}">
+                <p th:if="${#fields.hasErrors('postalCode')}"
+                   th:errors="*{postalCode}" th:errorclass="fieldError"></p>
+            </div>
+            <div>
+                <label>locality:</label>
+                <input type="text" th:field="*{locality}">
+                <p th:if="${#fields.hasErrors('locality')}"
+                   th:errors="*{locality}" th:errorclass="fieldError"></p>
+            </div>
+            <div>
+                <button type="submit" th:text="Modifier">Modifier</button>
+                <button type="reset" th:text="Réinitialiser">Réinitialiser</button>
+                <a th:href="${back}">Annuler</a>
+            </div>
+        </form>
+
+        <nav><a th:href="@{/localities}">Retour à l'index</a></nav>
+    </div>
+</div>
+</body>
+</html>
