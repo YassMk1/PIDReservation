@@ -14,7 +14,7 @@
 	<name>reservationsSpringBoot</name>
 	<description>Reservation Project Spring Boot for PID ICC</description>
 	<properties>
-		<java.version>11</java.version>
+		<java.version>1.8</java.version>
 	</properties>
 	<dependencies>
 		<dependency>

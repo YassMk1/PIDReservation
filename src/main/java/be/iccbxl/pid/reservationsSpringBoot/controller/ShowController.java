@@ -1,6 +1,6 @@
 package be.iccbxl.pid.reservationsSpringBoot.controller;
 
-import java.util.List;
+import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,6 +31,19 @@ public class ShowController {
 	@GetMapping("/shows/{id}")
    	 public String show(Model model, @PathVariable("id") String id) {
 		Show show = service.get(id);
+
+		//Récupérer les artistes du spectacle et les grouper par type
+        Map<Type,ArrayList<ArtistType>> collaborateurs = new HashMap<>(); //TreeMap require Type to be comparable
+        
+        for(ArtistType at : show.getArtistTypes()) {
+            if(collaborateurs.get(at.getType()) == null) {
+            	collaborateurs.put(at.getType(), new ArrayList<>());
+            }
+            
+            collaborateurs.get(at.getType()).add(at);
+        }
+        
+        model.addAttribute("collaborateurs", collaborateurs);
 
 		model.addAttribute("show", show);
 		model.addAttribute("title", "Fiche d'un spectacle");

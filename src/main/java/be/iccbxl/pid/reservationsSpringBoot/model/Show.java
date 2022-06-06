@@ -11,11 +11,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.github.slugify.Slugify;
+
 
 @Entity
 @Table(name="shows")
@@ -42,6 +44,9 @@ public class Show {
 	@ManyToOne
 	@JoinColumn(name="location_id", nullable=true)
 	private Location location;
+	
+	@ManyToMany(mappedBy = "shows")
+	private List<ArtistType> artistTypes = new ArrayList<>();
 	
 	private boolean bookable;
 	private double price;
@@ -177,6 +182,29 @@ public class Show {
 		
 		return this;
 	}
+	
+	public List<ArtistType> getArtistTypes() {
+		return artistTypes;
+	}
+
+	public Show addArtistType(ArtistType artistType) {
+		if(!this.artistTypes.contains(artistType)) {
+			this.artistTypes.add(artistType);
+			artistType.addShow(this);
+		}
+		
+		return this;
+	}
+	
+	public Show removeArtistType(ArtistType artistType) {
+		if(this.artistTypes.contains(artistType)) {
+			this.artistTypes.remove(artistType);
+			artistType.getShows().remove(this);
+		}
+		
+		return this;
+	}
+
 
 	@Override
 	public String toString() {

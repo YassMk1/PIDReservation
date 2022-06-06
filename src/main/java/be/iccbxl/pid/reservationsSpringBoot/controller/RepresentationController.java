@@ -17,7 +17,7 @@ public class RepresentationController {
 	RepresentationService service;
 
 	@GetMapping("/representations")
-public String index(Model model) {
+	public String index(Model model) {
 		List<Representation> representations = service.getAll();
 
 		model.addAttribute("representations", representations);
@@ -27,7 +27,7 @@ public String index(Model model) {
 }
 	
 	@GetMapping("/representations/{id}")
-public String show(Model model, @PathVariable("id") String id) {
+	public String show(Model model, @PathVariable("id") String id) {
 		Representation representation = service.get(id);
 
 		model.addAttribute("representation", representation);
