@@ -7,26 +7,27 @@
 <body>
 	<div class="container">
 	     <div layout:fragment="content">
-	        <h1 th:text="${show.title}">Ayiti</h1>
+			<h1 th:text="${show.title}">Ayiti</h1>
+			<h1 th:text="${show.category}">unknown</h1>
 
 	        <p th:if="${show.posterUrl}">
 		<img th:src="@{'/images/'+${show.posterUrl}}" th:alt="${show.title}" src="/images/default.jpg" alt="" width="200">
 	        </p>
 	        <canvas th:unless="${show.posterUrl}" width="200" height="100" style="border:1px solid #000000;"></canvas>
         
-	        <p th:if="${show.location}"><strong>Lieu de création:</strong> <span th:text="${show.location.designation}">Art Center</span></p>
+	        <p th:if="${show.location}"><strong>Lieu de crï¿½ation:</strong> <span th:text="${show.location.designation}">Art Center</span></p>
 	
-	        <p><strong>Prix:</strong> <span th:text="${show.price} + ' €'">9.99 €</span></p>
+	        <p><strong>Prix:</strong> <span th:text="${show.price} + ' ï¿½'">9.99 ï¿½</span></p>
         
-	        <p th:if="${show.bookable}"><em>Réservable</em></p>
-	        <p th:unless="${show.bookable}"><em>Non réservable</em></p>
+	        <p th:if="${show.bookable}"><em>Rï¿½servable</em></p>
+	        <p th:unless="${show.bookable}"><em>Non rï¿½servable</em></p>
 	        
-	        <h2>Liste des représentations</h2>
+	        <h2>Liste des reprï¿½sentations</h2>
 	        <ul th:if="${#lists.size(show.representations)>=1}">
 	                <li th:each="representation : ${show.representations}" 
 	    		th:text="${#temporals.format(representation.when,'dd-MM-yyyy HH:mm')}">12-10-2012 13:30</li>              
 	        </ul>
-	        <p th:if="${#lists.size(show.representations)==0}">Aucune représentation</p>
+	        <p th:if="${#lists.size(show.representations)==0}">Aucune reprï¿½sentation</p>
 	        
 	        <h2>Liste des artistes</h2>
 	        <p><strong>Auteur:</strong>
@@ -36,15 +37,15 @@
 	            	Firstname Lastname
 	        	</span>
 	        </p>
-	        <p><strong>Metteur en scène:</strong>
-	        	<span th:each="scenographe,iter : ${collaborateurs['scénographe']}" 
+	        <p><strong>Metteur en scï¿½ne:</strong>
+	        	<span th:each="scenographe,iter : ${collaborateurs['scï¿½nographe']}" 
 			th:text="${scenographe.firstname}+' '+${scenographe.lastname}
 	        		+ (${iter.count}==${iter.size}-1 ? ' et ':(${iter.last}?'':', '))">
 	            	Firstname Lastname
 	        	</span>
 	        </p>
 	        <p><strong>Distribution:</strong>
-	            <span th:each="comedien,iter : ${collaborateurs['comédien']}" 
+	            <span th:each="comedien,iter : ${collaborateurs['comï¿½dien']}" 
 			th:text="${comedien.firstname}+' '+${comedien.lastname}
 	        		+ (${iter.count}==${iter.size}-1 ? ' et ':(${iter.last}?'':', '))">
 	            	Firstname Lastname
@@ -54,7 +55,7 @@
 	        
 	        
         
-	        <nav><a th:href="@{/shows}">Retour à l'index</a></nav>
+	        <nav><a th:href="@{/shows}">Retour ï¿½ l'index</a></nav>
 	     </div>
 	</div>
 </body>

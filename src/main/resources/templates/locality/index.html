@@ -10,7 +10,7 @@
 	        <h1 th:text="${title}">Liste des localités</h1>
 
 			 <div class="actions">
-				 <a th:href="@{/types/create}">Add new locality</a>
+				 <a th:href="@{/categories/create}">Add new locality</a>
 			 </div>
 
 			 <table th:unless="${#lists.isEmpty(localities)}">

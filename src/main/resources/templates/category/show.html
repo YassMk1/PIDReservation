@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.mx/thymeleaf/layout"
+ layout:decorate="~{layouts/main}">
+<head>
+<title>Fiche d'une category</title>
+</head>
+<body>
+	<div class="container">
+	     <div layout:fragment="content">
+	        <h1 th:text="${category.name}">Unknown</h1>
+
+	        <ul th:unless="${#lists.isEmpty(category.shows)}">
+	       	<li th:each="show : ${category.shows}"
+    			 th:text="${show.title}">Show title</li>
+   	        </ul>
+
+			 <div class="actions">
+				 <a th:href="@{/categories/{id}/edit(id=${category.id})}">Edit</a>
+			 </div>
+
+   	        <p th:if="${#lists.isEmpty(category.shows)}">Aucun show de cette categorie.</p>
+        
+	        <nav><a th:href="@{/categories}">Retour à l'index</a></nav>
+	     </div>
+	</div>
+</body>
+</html>

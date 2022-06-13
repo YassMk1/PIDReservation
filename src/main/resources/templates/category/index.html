@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.mx/thymeleaf/layout"
+	  layout:decorate="~{layouts/main}">
+<head>
+	<title>Liste des categories</title>
+</head>
+<body>
+<div class="container">
+	<div layout:fragment="content">
+		<h1 th:text="${title}">Liste des categories</h1>
+
+		<div class="actions">
+			<a th:href="@{/categories/create}">Add new category</a>
+		</div>
+
+		<table th:unless="${#lists.isEmpty(categories)}">
+			<thead>
+			<tr>
+				<th>name</th>
+				<th colspan="2">Actions</th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr th:each="category : ${categories}">
+				<td th:text="${category.name}">name</td>
+				<td><a th:href="@{/categories/{id}(id=${category.id})}">View</a></td>
+				<td><a th:href="@{/categories/{id}/edit(id=${category.id})}">Edit</a></td>
+			</tr>
+			</tbody>
+		</table>
+
+	</div>
+</div>
+</body>
+</html>
