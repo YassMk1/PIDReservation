@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:layout="http://www.ultraq.net.mx/thymeleaf/layout"
+      layout:decorate="~{layouts/main}">
+<head>
+    <title>Creation d'un spectacle</title>
+    <style>
+        .fieldError { color: red; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div layout:fragment="content">
+        <h1>Nouveau spectacle</h1>
+
+        <form th:action="@{/shows/create}" th:object="${show}" method="post">
+            <div>
+                <label>Titre :</label>
+                <input type="text" th:field="*{title}">
+                <p th:if="${#fields.hasErrors('title')}"
+                   th:errors="*{title}" th:errorclass="fieldError"></p>
+            </div>
+            <div>
+                <label>Description :</label>
+                <input type="text" th:field="*{description}">
+                <p th:if="${#fields.hasErrors('description')}"
+                   th:errors="*{description}" th:errorclass="fieldError"></p>
+            </div>
+            <div>
+                <label>Image :</label>
+                <input type="text" th:field="*{posterUrl}">
+                <p th:if="${#fields.hasErrors('posterUrl')}"
+                   th:errors="*{posterUrl}" th:errorclass="fieldError"></p>
+            </div>
+            <div>
+                <label>Bookable :</label>
+                <input type="radio" th:field="*{bookable}" th:value="${show.bookable}">
+                <p th:if="${#fields.hasErrors('bookable')}"
+                   th:errors="*{bookable}" th:errorclass="fieldError"></p>
+            </div>
+            <div>
+                <button type="submit" th:text="Modifier">Modifier</button>
+                <button type="reset" th:text="Réinitialiser">Réinitialiser</button>
+                <a th:href="@{/shows}">Annuler</a>
+            </div>
+        </form>
+
+        <nav><a th:href="@{/shows}">Retour à l'index</a></nav>
+    </div>
+</div>
+</body>
+</html>

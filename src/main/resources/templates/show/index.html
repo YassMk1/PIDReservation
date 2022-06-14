@@ -8,6 +8,10 @@
 	<div class="container">
 	     <div layout:fragment="content">
 	        <h1 th:text="${title}">Liste des spectacles</h1>
+	        
+	        <div class="actions">
+			<a th:href="@{/shows/create}">Ajouter un spectacle</a>
+			</div>	
 	
 	        <ul th:unless="${#lists.isEmpty(shows)}">
             	<li th:each="show : ${shows}">

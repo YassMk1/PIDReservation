@@ -15,9 +15,11 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 
 import com.github.slugify.Slugify;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 
@@ -25,6 +27,7 @@ import lombok.Setter;
 @Table(name="shows")
 @Getter
 @Setter
+@NoArgsConstructor
 public class Show {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -33,7 +36,9 @@ public class Show {
 	@Column(unique=true)
 	private String slug;
 
+	@Size(max = 255)
 	private String title;
+	
 	private String description;
 
 	@Column(name="poster_url")
@@ -70,8 +75,6 @@ public class Show {
 	@ManyToOne
 	@JoinColumn(name="category_id", nullable=false)
 	private Category category;
-
-	public Show() { }
 	
 	public Show(String title, String description, String posterUrl, Location location, boolean bookable,
 			double price) {
